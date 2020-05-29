@@ -1,4 +1,4 @@
-// Exercise 6
+// Exercise 10
 // -------------------
 
 // Below are two objects of the same "format".
@@ -7,7 +7,7 @@
 //
 // Notice that there are duplicates (eg. both Riley and John like "ice-cream").
 
-const favouriteDessertsGroupA = {
+const favoriteDessertsGroupA = {
   scott: 'brownies',
   fred: 'tiramisu',
   lisa: 'chocolate cake',
@@ -48,39 +48,13 @@ const favouriteDessertsGroupB = {
 // in the array.
 //
 // For "ties", the order doesn't matter.
+//
+// HINT: You'll need to do this in 2 steps:
+// - First, count how often each dessert appears
+// - Second, put them in order
 
 function sortDessertsByPopularity(dessertObject) {
-  let dessertCounts = {};
-
-  Object.values(dessertObject).forEach((dessert) => {
-    // Is this dessert brand-new, or has it come up already?
-    let isBrandNewItem = typeof dessertCounts[dessert] === 'undefined';
-
-    if (isBrandNewItem) {
-      // If it's brand new, add it to the object, and assign it a count of `1`
-      dessertCounts[dessert] = 1;
-    } else {
-      // Otherwise, increment it
-      dessertCounts[dessert]++;
-    }
-  });
-
-  // dessertCount should now be an object like:
-  // { 'pie': 3, 'gummy bears': 2, 'child tears': 1 }
-  //
-  // We can iterate through the keys, and use the `.sort` method to put
-  // them in order
-
-  return Object.keys(dessertCounts).sort((dessertA, dessertB) => {
-    let dessertCountA = dessertCounts[dessertA];
-    let dessertCountB = dessertCounts[dessertB];
-
-    if (dessertCountA < dessertCountB) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
+  // Write code
 }
 
 console.log(
@@ -93,7 +67,7 @@ Exercise B
 Create a new object with the following form:
 
 {
-  nameOfDessert: ['name1', 'name2']
+  'name of dessert': ['name1', 'name2']
 }
 
 To be clear:
@@ -103,39 +77,24 @@ To be clear:
 
 Expected output for Group B:
 
+{
+  'pie': [ 'alice', 'glinda', 'khloe' ],
+  'deep-fried mars bar': [ 'betty' ],
+  'gummy bears': [ 'colin', 'fertrude' ],
+  'child tears': [ 'damien' ],
+  'panda express': [ 'ellicia' ],
+  'not applicable': [ 'hethel' ],
+  'rum cake': [ 'irsula' ],
+  'revenge (served cold)': [ 'judas' ],
+  'easter eggs': [ 'lyndon' ],
+  'dessert': [ 'minda' ]
+}
+
+(The order doesn't matter for objects. Your desserts might be in a different
+order, and that's 100% OK).
 */
 
-function groupPeopleByDessert(dessertObject) {
-  let outputObject = {};
-
-  /*
-  Let's do this in 2 steps.
-  First, let's create the general structure, where every dessert is
-  given an empty array.
-
-  {
-    pie: [],
-    chocolate: [],
-    whatever: [],
-    // etc
-  }
-  */
-
-  let groupObject = {};
-
-  Object.values(dessertObject).forEach((dessert) => {
-    groupObject[dessert] = [];
-  });
-
-  // Next, we'll do another pass, and fill those arrays with people
-  Object.entries(dessertObject).forEach((entry) => {
-    const [name, dessert] = entry;
-
-    groupObject[dessert].push(name);
-  });
-
-  return groupObject;
-}
+function groupPeopleByDessert(dessertObject) {}
 
 console.log(
   'People grouped by dessert:',

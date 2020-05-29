@@ -10,7 +10,7 @@ const people = [
   { name: { first: 'Shahan', middle: 'Haig', last: 'Krakirian' }, age: 21 },
 ];
 
-// Exercise 5.0
+// Exercise 8.0
 // ------------
 // Add the object representing yourself to this array of people (if your
 // `name` key does not have the same "shape" as the ones above, make sure you
@@ -18,7 +18,7 @@ const people = [
 
 //-------------------------------------------------
 
-// Exercise 5.1
+// Exercise 8.1
 // ------------
 // Write a function that returns the average age of the `people` array.
 
@@ -30,7 +30,7 @@ console.log(`Average age is ${avgAge(people)}.`);
 
 //-------------------------------------------------
 
-// Exercise 5.2
+// Exercise 8.2
 // ------------
 // Write a function that, when passed an array of *people* (person objects) as
 // an argument, returns an array of their full names (each full name is a string).
@@ -44,7 +44,7 @@ console.log(fullName(people));
 
 //-------------------------------------------------
 
-// Exercise 5.3
+// Exercise 8.3
 // ------------
 // Write a function that, when given *people* and an *age* as arguments,
 // returns an array of just the people that are older than the specified age..

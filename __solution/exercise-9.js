@@ -1,10 +1,11 @@
-/**
- * One of the most common tasks as a software developer is to "transform" data
- * from one form to another.
- *
- * In this exercise, you're asked to transform data from the given shape to
- * a new shape.
- */
+// Exercise 9
+// -------------------
+
+// One of the most common tasks as a software developer is to "transform" data
+// from one form to another.
+
+// In this exercise, you're asked to transform data from the given shape to
+// a new shape.
 
 let inputData = {
   name: 'Will Byers',
@@ -28,59 +29,56 @@ let inputData = {
   girlfriendSuperpower2: 'multiverse portal sealing',
 };
 
-/*
+// We want a function that can transform it from that shape to this shape:
+//
+// {
+//   "name": "Will Byers",
+//   "age": 9,
+//   "status": "upside down",
+//   "address": {
+//     "streetAddress": "123 Whatever street",
+//     "city": "Hawkins",
+//     "state": "Indiana",
+//     "country": "United States"
+//   },
+//   "superpowers": [
+//     "can-blink-lights"
+//   ],
+//   "relationships": [
+//     {
+//       "type": "mother",
+//       "name": "Joyce Byers",
+//       "age": 35,
+//       "status": "worried",
+//       "superpowers": []
+//     },
+//     {
+//       "type": "girlfriend",
+//       "name": "Eleven",
+//       "age": 9,
+//       "status": "angry",
+//       "superpowers": [
+//         "telepathy",
+//         "multiverse portal sealing"
+//       ]
+//     }
+//   ]
+// }
 
-We want a function that can transform it from that shape to this shape:
+// Specifically:
 
-{
-  "name": "Will Byers",
-  "age": 9,
-  "status": "upside down",
-  "address": {
-    "streetAddress": "123 Whatever street",
-    "city": "Hawkins",
-    "state": "Indiana",
-    "country": "United States"
-  },
-  "superpowers": [
-    "can-blink-lights"
-  ],
-  "relationships": [
-    {
-      "type": "mother",
-      "name": "Joyce Byers",
-      "age": 35,
-      "status": "worried",
-      "superpowers": []
-    },
-    {
-      "type": "girlfriend",
-      "name": "Eleven",
-      "age": 9,
-      "status": "angry",
-      "superpowers": [
-        "telepathy",
-        "multiverse portal sealing"
-      ]
-    }
-  ]
-}
+// - Address becomes nested in an object
+// - Instead of `superpower1` and `superpower2`, an array is used
+// - Instead of having a "flat" structure for relationships, a new `relationships`
+//   array is added, which holds objects for each relationship.
+// - Each relationship has a `type`, like mother/best-friend/girlfriend
+// - Each relationship also has an array of super powers, same logic as the main
+//   `superpowers` array
 
-Specifically:
-
-- Address becomes nested in an object
-- Instead of `superpower1` and `superpower2`, an array is used.
-- Instead of having a "flat" structure for relationships, a new `relationships`
-  array is added, which holds objects for each relationship.
-- Each relationship has a `type`, like mother/best-friend/girlfriend
-- Each relationship also has an array of super powers, same logic as the main
-  `superpowers` array
-
-NOTE: For superpowers, you should only have as many items as are available.
-For example, the main superpowers array should be:
-✅ ['can-blink-lights']
-⛔️ ['can-blink-lights', null]
-*/
+// NOTE: For superpowers, you should only have as many items as are available.
+// For example, the main superpowers array should be:
+// ✅ ['can-blink-lights']
+// ⛔️ ['can-blink-lights', null]
 
 function getSuperpowers(power1, power2) {
   let powersArray = [];
@@ -138,8 +136,7 @@ function transformData(data) {
   return outputData;
 }
 
-/*
-  `JSON.stringify` is used to "pretty-print" the output, so that it's easy
-  to see what it looks like, and debug any problems.
-*/
+// `JSON.stringify` is used to "pretty-print" the output, so that it's easy
+// to see what it looks like, and debug any problems.
+
 console.log(JSON.stringify(transformData(inputData), null, 2));

@@ -1,4 +1,4 @@
-// Exercise 1.0
+// Exercise 4.0
 // ------------
 // Create an object that represents *you*.
 // It should contain your first name, last name, age and hometown.
@@ -21,7 +21,7 @@
 
 //-------------------------------------------------
 
-// Exercise A
+// Exercise 4.1
 // ------------
 // Add three more key/value pairs to your object that represent other attributes
 // of yourself. Ideas include (but are not limited to):
@@ -34,7 +34,7 @@
 
 //-------------------------------------------------
 
-// Exercise B
+// Exercise 4.2
 // ------------
 // Look up your favorite movie on IMDB, and make an object that represents some
 // aspects of that movie, *e.g.*:
@@ -51,7 +51,7 @@ let favoriteMovie = {};
 
 //-------------------------------------------------
 
-// Exercise C
+// Exercise 4.3
 // ------------
 // Fix the attempts to access values in the `person` object:
 
@@ -67,7 +67,7 @@ person.key; // => "Alyssa P. Hacker"
 
 //-------------------------------------------------
 
-// Exercise D
+// Exercise 4.4
 // ------------
 // Write a function `fullName` that takes a person object as an argument, and
 // returns that person's full name as a string. By *person object*, we mean an
@@ -90,7 +90,7 @@ function fullName(person) {
 
 console.log(fullName(alyssa)); // => "Alyssa P. Hacker"
 
-// Exercise E
+// Exercise 4.5
 // ------------
 // What happens if you pass a person object to `fullName` that doesn't have a
 // middle name? It's likely that you'd get a double space: "Alyssa  Hacker"
