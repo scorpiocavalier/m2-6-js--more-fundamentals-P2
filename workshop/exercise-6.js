@@ -49,6 +49,10 @@ const staffMembers = [
   },
 ];
 
-const getData = (arr, key) => {
-  // return something
-};
+const getData = (arr, key) => arr.map(employee => employee[key])
+
+let allEmployeeNames = getData(staffMembers, 'name')
+let allEmployeeTitles = getData(staffMembers, 'title')
+
+console.log(allEmployeeNames)
+console.log(allEmployeeTitles)
