@@ -13,3 +13,9 @@ let mostPopularFood = [
   'parmesan chicken',
   'buffalo-flavored cauliflower',
 ];
+
+const printFoodList = foodList => {
+  foodList.sort().forEach((food, index) => console.log(`${food} (${index + 1})`))
+}
+
+printFoodList(mostPopularFood);
