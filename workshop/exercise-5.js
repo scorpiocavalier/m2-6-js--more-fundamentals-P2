@@ -8,9 +8,7 @@ const foodPairings = {
   strawberries: 'cream',
 };
 
-const getValue = () => {
-  // do something
-};
+const getValue = (obj, key) => Object.keys(obj).includes(key) ? obj[key] : 'not available';
 
 expect(getValue(foodPairings, 'burgers'), 'beer');
 expect(getValue(foodPairings, 'beef'), 'red wine');

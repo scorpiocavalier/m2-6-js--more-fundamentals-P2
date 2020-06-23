@@ -15,7 +15,12 @@ let mostPopularFood = [
 ];
 
 const printFoodList = foodList => {
-  foodList.sort().forEach((food, index) => console.log(`${food} (${index + 1})`))
+  
+  let rankedFoodList = foodList.map((food, index) => {
+    return `${food} (${index+1})`
+  })
+
+  rankedFoodList.sort().forEach(food => console.log(food))
 }
 
 printFoodList(mostPopularFood);
