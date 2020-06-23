@@ -8,8 +8,6 @@ let foodPairings = {
   strawberries: 'cream',
 };
 
-const converter = (obj) => {
-  // do something
-};
+const converter = obj => [Object.keys(obj), Object.values(obj)]
 
 console.log(converter(foodPairings));
