@@ -1,10 +1,9 @@
-// Exercise 10
-// -------------------
+// Exercise 11
+// -----------
 
 // Below are two objects of the same "format".
-// Each object is a mapping between individual people and their favourite
-// desserts
-//
+// Each object is a mapping between individual people
+// and their favourite desserts
 // Notice that there are duplicates (eg. both Riley and John like "ice-cream").
 
 const favoriteDessertsGroupA = {
@@ -41,7 +40,8 @@ const favouriteDessertsGroupB = {
   minda: 'dessert',
 };
 
-// Exercise A
+// Exercise 11-1
+// -------------
 // Write a function which takes one of these objects and puts them into an
 // array which is sorted from most popular to least popular. For example,
 // in Group B, the most popular dessert is "pie", so it should be first
@@ -62,39 +62,40 @@ console.log(
   sortDessertsByPopularity(favouriteDessertsGroupB)
 );
 
-/*
-Exercise B
-Create a new object with the following form:
+// Exercise 11-2
+// -------------
+// Create a new object with the following form:
 
-{
-  'name of dessert': ['name1', 'name2']
+// {
+//   'name of dessert': ['name1', 'name2']
+// }
+
+// To be clear:
+// - The keys of this object should be the desserts
+// - The values should be arrays of the names of the people who prefer this
+//   dessert.
+
+// Expected output for Group B:
+
+// {
+//   'pie': [ 'alice', 'glinda', 'khloe' ],
+//   'deep-fried mars bar': [ 'betty' ],
+//   'gummy bears': [ 'colin', 'fertrude' ],
+//   'child tears': [ 'damien' ],
+//   'panda express': [ 'ellicia' ],
+//   'not applicable': [ 'hethel' ],
+//   'rum cake': [ 'irsula' ],
+//   'revenge (served cold)': [ 'judas' ],
+//   'easter eggs': [ 'lyndon' ],
+//   'dessert': [ 'minda' ]
+// }
+
+// (The order doesn't matter for objects. Your desserts might be in a different
+// order, and that's 100% OK).
+
+function groupPeopleByDessert(dessertObject) {
+  // do something
 }
-
-To be clear:
-- The keys of this object should be the desserts
-- The values should be arrays of the names of the people who prefer this
-  dessert.
-
-Expected output for Group B:
-
-{
-  'pie': [ 'alice', 'glinda', 'khloe' ],
-  'deep-fried mars bar': [ 'betty' ],
-  'gummy bears': [ 'colin', 'fertrude' ],
-  'child tears': [ 'damien' ],
-  'panda express': [ 'ellicia' ],
-  'not applicable': [ 'hethel' ],
-  'rum cake': [ 'irsula' ],
-  'revenge (served cold)': [ 'judas' ],
-  'easter eggs': [ 'lyndon' ],
-  'dessert': [ 'minda' ]
-}
-
-(The order doesn't matter for objects. Your desserts might be in a different
-order, and that's 100% OK).
-*/
-
-function groupPeopleByDessert(dessertObject) {}
 
 console.log(
   'People grouped by dessert:',

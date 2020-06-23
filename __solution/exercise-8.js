@@ -1,82 +1,65 @@
-// We often deal with "arrays of objects";
-// below is an example of an array of objects, where each object represents a person:
+// Exercise 8
+// ----------
 
-const people = [
-  { name: { first: 'Alyssa', middle: 'P.', last: 'Hacker' }, age: 26 },
-  { name: { first: 'Ben', last: 'Bitdiddle' }, age: 34 },
-  { name: { first: 'Eva', middle: 'Lu', last: 'Ator' }, age: 40 },
-  { name: { first: 'Lem', middle: 'E.', last: 'Tweakit' }, age: 45 },
-  { name: { first: 'Louis', last: 'Reasoner' }, age: 21 },
-  { name: { first: 'Shahan', middle: 'Haig', last: 'Krakirian' }, age: 21 },
+const staffMembers = [
+  {
+    name: 'Jane Smith',
+    title: 'Web Developer II',
+    skillLevels: {
+      javascript: 7,
+      python: 4,
+      sql: 6,
+    },
+  },
+  {
+    name: 'Frank Castle',
+    title: 'Web Developer I',
+    skillLevels: {
+      javascript: 4,
+      python: 4,
+      sql: 3,
+    },
+  },
+  {
+    name: 'Steve Rogers',
+    title: 'Database Admin',
+    skillLevels: {
+      javascript: 7,
+      python: 4,
+      sql: 9,
+    },
+  },
+  {
+    name: 'Chuck Taylor',
+    title: 'Web Developer III',
+    skillLevels: {
+      javascript: 8,
+      python: 7,
+      sql: 8,
+    },
+  },
+  {
+    name: 'Thor Odinson',
+    title: 'Web Intern',
+    skillLevels: {
+      javascript: 4,
+      python: 3,
+      sql: 6,
+    },
+  },
 ];
 
-// Exercise 8.0
-// ------------
-// Add the object representing yourself to this array of people (if your
-// `name` key does not have the same "shape" as the ones above, make sure you
-// change it to look like these).
-
-people.push({ name: { first: 'Scott', last: 'Morin' }, age: 49 });
-
-//-------------------------------------------------
-
-// Exercise 8.1
-// ------------
-// Write a function that returns the average age of the `people` array.
-
-function avgAge(peopleArr) {
-  let sumOfAges = 0;
-  const numberOfAges = peopleArr.length;
-
-  peopleArr.forEach((person) => {
-    sumOfAges += person.age;
+const getJSMasters = (arr) => {
+  return arr.filter((obj) => {
+    return obj.skillLevels.javascript > 5;
   });
-  return sumOfAges / numberOfAges;
-}
+};
 
-console.log(`Average age is ${avgAge(people)}.`);
+console.log(getJSMasters(staffMembers));
 
-//-------------------------------------------------
-
-// Exercise 8.2
-// ------------
-// Write a function that, when passed an array of *people* (person objects) as
-// an argument, returns an array of their full names (each full name is a string).
-// Can you make use of your `fullName` function here?
-
-// Solution 1: using `forEach`
-function fullName(peopleArr) {
-  const peopleNames = [];
-  peopleArr.forEach((person) => {
-    const fullName = Object.values(person.name).join(' ');
-    peopleNames.push(fullName);
+// Stretch
+const getStaff = (arr, lang, minLevel) => {
+  return arr.filter((obj) => {
+    return obj.skillLevels[lang] >= minLevel;
   });
-
-  return peopleNames;
-}
-
-// Solution 2: using `map` (preferred)
-function fullNameMap(peopleArr) {
-  return peopleArr.map((person) => {
-    const allNames = Object.values(person.name);
-    const fullNames = allNames.join(' ');
-
-    return fullNames;
-  });
-}
-console.log(fullNameMap(people));
-
-//-------------------------------------------------
-
-// Exercise 8.3
-// ------------
-// Write a function that, when given *people* and an *age* as arguments,
-// returns an array of just the people that are older than the specified age..
-
-function olderPeople(peopleArr, age) {
-  return peopleArr.filter((person) => {
-    return person.age > age;
-  });
-}
-
-console.log(olderPeople(people, 26));
+};

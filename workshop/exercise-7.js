@@ -1,5 +1,5 @@
 // Exercise 7
-// -------------------
+// ----------
 
 let foodPairings = {
   burgers: 'beer',
@@ -8,10 +8,9 @@ let foodPairings = {
   strawberries: 'cream',
 };
 
-// We have an Object that contains food pairings so that our sommelier can make
-// educated recommendations. What we need is an Array that only holds all the foods.
+// createRecommendations function
 
-// 6.1. Write a script that will print out all foods in the object.
+// printRecommendations function
 
-// 6.2 Write a script that outputs each key/value pair to the console a sentence like this:
-// "With <FOOD_ITEM>, it is best to have <BEVERAGE>."
+// function call (done)
+printRecommendations(createRecommendations(foodPairings));

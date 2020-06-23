@@ -1,7 +1,5 @@
 // Exercise 1
 // -------------------
-// Grubhub's "year in food" for 2018
-// source: https://www.insider.com/most-popular-foods-grubhub-2018-12
 
 let mostPopularFood = [
   'poke bowl',
@@ -15,25 +13,25 @@ let mostPopularFood = [
   undefined,
 ];
 
-// The array holds a top-ten list of foods as ranked by Grubhub.
-// #1 and #10 are missing
-//       #1 is 'bean burritos'
-//      #10 is 'buffalo-flavored cauliflower' (not kidding)
+// STEP 1
+const fixList = (arr, first, last) => {
+  const completeList = [...arr];
 
-// Write a program that will do the following:
-// Add them to the array in the right position
-// Output them in a tidy top-ten fashion in the console.
+  completeList.unshift(first); // add #1
+  completeList.pop(); // remove the undefined
+  completeList.push(last); // add #10
 
-// NO for loops!
+  return completeList;
+};
 
-// add #1
-mostPopularFood.unshift('bean burritos');
+// STEP 2
+const printList = (arr) => {
+  for (let i = 0; i < arr.length; i++) {
+    console.log(`${i + 1}. ${arr[i]}`);
+  }
+};
 
-// add #10 (remove the undefined first)
-mostPopularFood.pop();
-mostPopularFood.push('buffalo-flavored cauliflower');
-
-// output list
-mostPopularFood.forEach((item, id) => {
-  console.log(`${id + 1}: ${item}`);
-});
+// Call the functions
+printList(
+  fixList(mostPopularFood, 'bean burritos', 'buffalo-flavored cauliflower')
+);

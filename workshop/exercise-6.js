@@ -1,5 +1,5 @@
 // Exercise 6
-// -------------------
+// ----------
 
 const staffMembers = [
   {
@@ -49,7 +49,6 @@ const staffMembers = [
   },
 ];
 
-// We need you to write a script that will print someone's JavaScript ability level.
-// Write a line that will print the JavaScript level for employee Chuck Taylor.
-
-// You will need both Array and Object syntax.
+const getData = (arr, key) => {
+  // return something
+};

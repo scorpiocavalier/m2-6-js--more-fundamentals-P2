@@ -1,143 +1,84 @@
 // Exercise 10
 // -------------------
 
-// Below are two objects of the same "format".
-// Each object is a mapping between individual people and their favourite
-// desserts
-//
-// Notice that there are duplicates (eg. both Riley and John like "ice-cream").
-
-const favouriteDessertsGroupA = {
-  scott: 'brownies',
-  fred: 'tiramisu',
-  lisa: 'chocolate cake',
-  riley: 'ice-cream',
-  sunny: 'cheese cake',
-  john: 'ice-cream',
-  beth: 'cheese cake',
-  summer: 'ice-cream',
-  morty: 'apple pie',
-  rick: 'brownies',
-  andrew: 'cheese cake',
-  jerry: 'rhubard pie',
-  'jean-luc': 'cheese cake',
-  tiffany: 'waffles',
-  melissa: 'profiteroles',
+let inputData = {
+  name: 'Will Byers',
+  age: 9,
+  status: 'upside down',
+  superpower1: 'can-blink-lights',
+  superpower2: null,
+  address1: '123 Whatever street',
+  addressCity: 'Hawkins',
+  addressState: 'Indiana',
+  addressCountry: 'United States',
+  motherName: 'Joyce Byers',
+  motherAge: 35,
+  motherStatus: 'worried',
+  motherSuperpower1: null,
+  motherSuperpower2: null,
+  girlfriendName: 'Eleven',
+  girlfriendAge: 9,
+  girlfriendStatus: 'angry',
+  girlfriendSuperpower1: 'telepathy',
+  girlfriendSuperpower2: 'multiverse portal sealing',
 };
 
-const favouriteDessertsGroupB = {
-  alice: 'pie',
-  betty: 'deep-fried mars bar',
-  colin: 'gummy bears',
-  damien: 'child tears',
-  ellicia: 'panda express',
-  fertrude: 'gummy bears',
-  glinda: 'pie',
-  hethel: 'not applicable',
-  irsula: 'rum cake',
-  judas: 'revenge (served cold)',
-  khloe: 'pie',
-  lyndon: 'easter eggs',
-  minda: 'dessert',
-};
+function getSuperpowers(power1, power2) {
+  let powersArray = [];
 
-// Exercise A
-// Write a function which takes one of these objects and puts them into an
-// array which is sorted from most popular to least popular. For example,
-// in Group B, the most popular dessert is "pie", so it should be first
-// in the array.
-//
-// For "ties", the order doesn't matter.
-
-function sortDessertsByPopularity(dessertObject) {
-  let dessertCounts = {};
-
-  Object.values(dessertObject).forEach((dessert) => {
-    // Is this dessert brand-new, or has it come up already?
-    let isBrandNewItem = typeof dessertCounts[dessert] === 'undefined';
-
-    if (isBrandNewItem) {
-      // If it's brand new, add it to the object, and assign it a count of `1`
-      dessertCounts[dessert] = 1;
-    } else {
-      // Otherwise, increment it
-      dessertCounts[dessert]++;
-    }
-  });
-
-  // dessertCount should now be an object like:
-  // { 'pie': 3, 'gummy bears': 2, 'child tears': 1 }
-  //
-  // We can iterate through the keys, and use the `.sort` method to put
-  // them in order
-
-  return Object.keys(dessertCounts).sort((dessertA, dessertB) => {
-    let dessertCountA = dessertCounts[dessertA];
-    let dessertCountB = dessertCounts[dessertB];
-
-    if (dessertCountA < dessertCountB) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
-}
-
-console.log(
-  'Popular desserts in Group B:',
-  sortDessertsByPopularity(favouriteDessertsGroupB)
-);
-
-/*
-Exercise B
-Create a new object with the following form:
-
-{
-  nameOfDessert: ['name1', 'name2']
-}
-
-To be clear:
-- The keys of this object should be the desserts
-- The values should be arrays of the names of the people who prefer this
-  dessert.
-
-Expected output for Group B:
-
-*/
-
-function groupPeopleByDessert(dessertObject) {
-  let outputObject = {};
-
-  /*
-  Let's do this in 2 steps.
-  First, let's create the general structure, where every dessert is
-  given an empty array.
-
-  {
-    pie: [],
-    chocolate: [],
-    whatever: [],
-    // etc
+  if (power1) {
+    powersArray.push(power1);
   }
-  */
+  if (power2) {
+    powersArray.push(power2);
+  }
 
-  let groupObject = {};
-
-  Object.values(dessertObject).forEach((dessert) => {
-    groupObject[dessert] = [];
-  });
-
-  // Next, we'll do another pass, and fill those arrays with people
-  Object.entries(dessertObject).forEach((entry) => {
-    const [name, dessert] = entry;
-
-    groupObject[dessert].push(name);
-  });
-
-  return groupObject;
+  return powersArray;
 }
 
-console.log(
-  'People grouped by dessert:',
-  groupPeopleByDessert(favouriteDessertsGroupB)
-);
+function transformData(data) {
+  // Tackle some of the simpler parts first
+  let outputData = {
+    name: data.name,
+    age: data.age,
+    status: data.status,
+    address: {
+      streetAddress: data.address1,
+      city: data.addressCity,
+      state: data.addressState,
+      country: data.addressCountry,
+    },
+  };
+
+  // Let's add the super powers next.
+  // I know I'm going to need to do this a few times, so I pulled out a little
+  // function to make it a bit easier.
+  outputData.superpowers = getSuperpowers(data.superpower1, data.superpower2);
+
+  // Relationships!
+  let mother = {
+    type: 'mother',
+    name: data.motherName,
+    age: data.motherAge,
+    status: data.motherStatus,
+    superpowers: getSuperpowers(data.motherSuperpower1, data.motherSuperpower2),
+  };
+  let girlfriend = {
+    type: 'girlfriend',
+    name: data.girlfriendName,
+    age: data.girlfriendAge,
+    status: data.girlfriendStatus,
+    superpowers: getSuperpowers(
+      data.girlfriendSuperpower1,
+      data.girlfriendSuperpower2
+    ),
+  };
+
+  outputData.relationships = [mother, girlfriend];
+
+  return outputData;
+}
+
+// `JSON.stringify` is used to "pretty-print" the output, so that it's easy
+// to see what it looks like, and debug any problems.
+console.log(JSON.stringify(transformData(inputData), null, 2));

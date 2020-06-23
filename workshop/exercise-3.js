@@ -1,7 +1,8 @@
-// Exercise 1
+// Exercise 3
 // ----------
 
 let mostPopularFood = [
+  'bean burritos',
   'poke bowl',
   'chicken sliders',
   'pork baby back ribs',
@@ -10,5 +11,5 @@ let mostPopularFood = [
   'cauliflower rice bowl',
   'chicken and waffle sliders',
   'parmesan chicken',
-  undefined,
+  'buffalo-flavored cauliflower',
 ];

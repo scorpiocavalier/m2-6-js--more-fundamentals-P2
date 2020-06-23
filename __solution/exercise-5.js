@@ -1,22 +1,34 @@
 // Exercise 5
-// -------------------
+// ----------
 
-const myKey = 'width';
-
-const geometry = {
-  length: 20,
-  width: 30,
-  height: 10,
-  weight: 100,
+const foodPairings = {
+  burgers: 'beer',
+  fish: 'white wine',
+  beef: 'red wine',
+  strawberries: 'cream',
 };
 
-// In Javascript objects, there are two ways to look up a value:
-// - Dot notation (geometry.length)
-// - Brackets (geometry["length"])
-//
-// In this case, the key we want to use is held in a variable, `myKey`.
-//
-// Use that variable to look up the specified property in the `geometry` object.
-// Log it to the console:
+const getValue = (anObj, key) => {
+  if (Object.keys(anObj).includes(key)) {
+    return anObj[key];
+  } else {
+    return 'not available';
+  }
+};
 
-console.log(`The width is ${geometry[myKey]}`);
+expect(getValue(foodPairings, 'burgers'), 'beer');
+expect(getValue(foodPairings, 'beef'), 'red wine');
+expect(getValue(foodPairings, 'sushi'), 'not available');
+
+/**
+ * -------------------------------------------------------------------
+ * ⚠️ No changes necessary below. ⚠️
+ * -------------------------------------------------------------------
+ */
+function expect(result, value) {
+  if (result === value) {
+    console.log('✅ Test succeeded');
+  } else {
+    console.log(`⛔️ Expected “${result}” to equal “${value}”`);
+  }
+}
