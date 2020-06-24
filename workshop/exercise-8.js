@@ -48,3 +48,19 @@ const staffMembers = [
     },
   },
 ];
+
+const displayPros = (proficientStaffs, skill) => {
+  proficientStaffs.forEach(staff => {
+    console.log(`${staff.name} is considered a pro in ${skill}.`)
+  })
+}
+
+const proficientStaffs = (staffs, skill, level) => staffs.filter(staff => staff.skillLevels[skill] >= level)
+
+const javascriptPros = proficientStaffs(staffMembers, 'javascript', 6)
+const pythonPros = proficientStaffs(staffMembers, 'python', 3)
+const sqlPros = proficientStaffs(staffMembers, 'sql', 8)
+
+displayPros(javascriptPros, 'javascript')
+displayPros(pythonPros, 'python')
+displayPros(sqlPros, 'sql')
