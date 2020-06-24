@@ -5,27 +5,32 @@ let inputData = {
   name: 'Will Byers',
   age: 9,
   status: 'upside down',
+
   superpower1: 'can-blink-lights',
   superpower2: null,
+
   address1: '123 Whatever street',
   addressCity: 'Hawkins',
   addressState: 'Indiana',
   addressCountry: 'United States',
+
   motherName: 'Joyce Byers',
   motherAge: 35,
   motherStatus: 'worried',
   motherSuperpower1: null,
-  motherSuperpower1: null,
+  motherSuperpower2: null,
+
   bestFriendName: 'Mike Wheeler',
   bestFriendAge: 9,
   bestFriendStatus: 'frenetic',
   bestFriendSuperpower1: null,
-  bestFriendSuperpower1: null,
+  bestFriendSuperpower2: null,
+
   girlfriendName: 'Eleven',
   girlfriendAge: 9,
   girlfriendStatus: 'angry',
   girlfriendSuperpower1: 'telepathy',
-  girlfriendSuperpower1: 'multiverse portal sealing',
+  girlfriendSuperpower2: 'multiverse portal sealing',
 };
 
 // We want a function that can transform it from that shape to this shape:
@@ -80,7 +85,23 @@ let inputData = {
 // ⛔️ ['can-blink-lights', null]
 
 function transformData(data) {
-  
+  let { name, age, status, ...rest1 } = data
+  let { 'superpowers': [ superpower1, superpower2 ], ...rest2 } = rest1
+  let { 'address': { address1='streetAddress', addressCity='city', addressState='state', addressCountry='country'}, ...rest3 } = rest2
+  let { 'relationships':
+        [
+          { motherName='name', motherAge='age', motherStatus='status', superpowers },
+          { bestFriendName='name', bestFriendAge='age', bestFriendStatus='status', 'superpowers': [bestFriendSuperpower1, bestFriendSuperpower2 ] },
+          { girlfriendName='name'. girlfriendAge='age', girlfriendStatus='status', 'superpowers': [girlfriendSuperpower1, girlfriendSuperpower2 ] }
+        ] 
+      } = rest3
+
+  let transformedData = {
+    name, age, status,
+    superpowers: [
+      
+    ]
+  }
 }
 
 // `JSON.stringify` is used to "pretty-print" the output, so that it's easy
