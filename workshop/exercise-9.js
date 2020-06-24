@@ -17,7 +17,10 @@ const people = [
 // Write a function that returns the average age of the `people` array.
 
 function avgAge(peopleArr) {
-  // return something
+  let totalPeople = peopleArr.length
+  let sum = 0
+  peopleArr.forEach(person => sum += person.age)
+  return Math.round(sum / totalPeople)
 }
 
 console.log(`Average age is ${avgAge(people)}.`);
@@ -31,10 +34,13 @@ console.log(`Average age is ${avgAge(people)}.`);
 // Can you make use of your `fullName` function here?
 
 function fullName(peopleArr) {
-  // return something
+  return peopleArr.map(person => {
+    let { first, middle = '', last } = person.name
+    return [`${first} ${middle} ${last}`.replace('  ', ' ')]
+  })
 }
 
-console.log(fullName(people));
+console.log(fullName(people).join(', '));
 
 //-------------------------------------------------
 
@@ -43,8 +49,6 @@ console.log(fullName(people));
 // Write a function that, when given *people* and an *age* as arguments,
 // returns an array of just the people that are older than the specified age.
 
-function olderPeople(peopleArr, age) {
-  // return something
-}
+const olderPeople = (peopleArr, age) => peopleArr.filter(person => person.age >= age)
 
-console.log(olderPeople(people, 26));
+console.log(JSON.stringify(olderPeople(people, 26)));
