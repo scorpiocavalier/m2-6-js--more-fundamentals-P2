@@ -80,7 +80,7 @@ let inputData = {
 // ⛔️ ['can-blink-lights', null]
 
 function transformData(data) {
-  // Your code here
+  
 }
 
 // `JSON.stringify` is used to "pretty-print" the output, so that it's easy

@@ -51,4 +51,4 @@ console.log(fullName(people).join(', '));
 
 const olderPeople = (peopleArr, age) => peopleArr.filter(person => person.age >= age)
 
-console.log(JSON.stringify(olderPeople(people, 26)));
+console.log(JSON.stringify(olderPeople(people, 26), null, 2));
