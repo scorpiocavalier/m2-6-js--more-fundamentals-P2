@@ -19,7 +19,7 @@ const people = [
 function avgAge(peopleArr) {
   let totalPeople = peopleArr.length
   let sum = 0
-  peopleArr.forEach(person => sum += person.age)
+  peopleArr.forEach(({ age }) => sum += age)
   return Math.round(sum / totalPeople)
 }
 
@@ -40,7 +40,7 @@ function fullName(peopleArr) {
   })
 }
 
-console.log(fullName(people).join(', '));
+console.log(JSON.stringify(fullName(people), null, 2));
 
 //-------------------------------------------------
 
