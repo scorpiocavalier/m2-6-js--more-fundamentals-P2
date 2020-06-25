@@ -86,43 +86,66 @@ let inputData = {
 
 function transformData(data) {
 
-  const { name: fullname, age, status, ...rest1 } = data;
-
-  const { superpower1, superpower2, ...rest2 } = rest1;
-
-  const {
-    address1 = "streetAddress",
-    addressCity = "city",
-    addressState = "state",
-    addressCountry = "country",
-    ...rest3
-  } = rest2;
-
-  // let { 'relationships':
-  //       [
-  //         { motherName='name', motherAge='age', motherStatus='status', superpowers },
-  //         { bestFriendName='name', bestFriendAge='age', bestFriendStatus='status', 'superpowers': [bestFriendSuperpower1, bestFriendSuperpower2 ] },
-  //         { girlfriendName='name'. girlfriendAge='age', girlfriendStatus='status', 'superpowers': [girlfriendSuperpower1, girlfriendSuperpower2 ] }
-  //       ]
-  //     } = rest3
+  const { 
+    name, age, status,
+    superpower1, superpower2,
+    address1:streetAddress, addressCity:city,
+    addressState:state, addressCountry:country,
+    motherName, motherAge, motherStatus,
+    motherSuperpower1, motherSuperpower2,
+    bestFriendName, bestFriendAge, bestFriendStatus,
+    bestFriendSuperpower1, bestFriendSuperpower2,
+    girlfriendName, girlfriendAge, girlfriendStatus,
+    girlfriendSuperpower1, girlfriendSuperpower2
+  } = data;
 
   let transformedData = {
-    fullname,
+    name,
     age,
     status,
-    'superpowers': [superpower1, superpower2],
     'address': {
       streetAddress,
-      city,
-      state,
-      country
-    }
+      city, state, country
+    },
+    'superpowers': [
+      superpower1,
+      superpower2
+    ].filter(superpower => superpower !== null),
+    'relationships': [
+      {
+        'type': 'mother',
+        'name': motherName,
+        'age': motherAge,
+        'status': motherStatus,
+        'superpowers': [
+          motherSuperpower1,
+          motherSuperpower2
+        ].filter(superpower => superpower !== null)
+      },
+      {
+        'type': 'best friend',
+        'name': bestFriendName,
+        'age': bestFriendAge,
+        'status': bestFriendStatus,
+        'superpowers': [
+          bestFriendSuperpower1,
+          bestFriendSuperpower2
+        ].filter(superpower => superpower !== null)
+      },
+      {
+        'type': 'girlfriend',
+        'name': girlfriendName,
+        'age': girlfriendAge,
+        'status': girlfriendStatus,
+        'superpowers': [
+          girlfriendSuperpower1,
+          girlfriendSuperpower2
+        ].filter(superpower => superpower !== null)
+      }
+    ]
   };
 
   return transformedData;
 }
-
-// `JSON.stringify` is used to "pretty-print" the output, so that it's easy
-// to see what it looks like, and debug any problems.
 
 console.log(JSON.stringify(transformData(inputData), null, 2));
